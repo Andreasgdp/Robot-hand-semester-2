@@ -7,7 +7,7 @@
 ***
 ***
 *** To avoid retyping too much info. Do a search and replace for the following:
-*** andreasgdp, Drawing-robot-semester-1, AndreasGuldberg, andreasgdp@gmail.com
+*** andreasgdp, Robot-hand-semester-2, AndreasGuldberg, andreasgdp@gmail.com
 -->
 
 
@@ -33,7 +33,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1">
+  <a href="https://github.com/Andreasgdp/Robot-hand-semester-2">
     <img src="images_readme/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -42,14 +42,14 @@
   <p align="center">
     A hand for to grap things.
     <br />
-    <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Andreasgdp/Robot-hand-semester-2"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1">View Demo</a>
+    <a href="https://github.com/Andreasgdp/Robot-hand-semester-2">View Demo</a>
     ·
-    <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1/issues">Report Bug</a>
+    <a href="https://github.com/Andreasgdp/Robot-hand-semester-2/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1/issues">Request Feature</a>
+    <a href="https://github.com/Andreasgdp/Robot-hand-semester-2/issues">Request Feature</a>
   </p>
 </p>
 
@@ -101,7 +101,7 @@ Comming soon...
 
 6. Clone the repo
 ```sh
-git clone https://github.com/andreasgdp/Drawing-robot-semester-1.git
+git clone https://github.com/andreasgdp/Robot-hand-semester-2.git
 ```
 1. Install
 ```sh
@@ -113,11 +113,11 @@ Information comming soon...
 ## Programming workflow
 This section will tell you how what the process of adding new features to the repo is like.
 
-1. You will have to create an issue with the feature/bug that you want to work on. <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1/issues" target="_blank">Create issue here</a>
-2. You will assign yourself to that issue and move the issue into the `In Progress` column in <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1/projects/2" target="_blank">Project Planning</a>
+1. You will have to create an issue with the feature/bug that you want to work on. <a href="https://github.com/Andreasgdp/Robot-hand-semester-2/issues" target="_blank">Create issue here</a>
+2. You will assign yourself to that issue and move the issue into the `In Progress` column in <a href="https://github.com/Andreasgdp/Robot-hand-semester-2/projects/2" target="_blank">Project Planning</a>
    1. A branch will be created with the issue number and name of the issue.
 3. You are to work on your feature on that specific branch and **NOT on the `master branch`**
-4. When done with your feature, you will have to create a Pull Request (PR). You can do that <a href="https://github.com/Andreasgdp/Drawing-robot-semester-1/compare" target="_blank">here</a>
+4. When done with your feature, you will have to create a Pull Request (PR). You can do that <a href="https://github.com/Andreasgdp/Robot-hand-semester-2/compare" target="_blank">here</a>
    1. After creating a pull request you can assign another person to review your code and then accept it.
 5. When your code has been accepted you will be able to merge your feature into the `master branch`.****
 
@@ -131,7 +131,7 @@ This section will tell you how what the process of adding new features to the re
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/andreasgdp/Drawing-robot-semester-1/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/andreasgdp/Robot-hand-semester-2/issues) for a list of proposed features (and known issues).
 
 
 
@@ -160,7 +160,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@AndreasGuldberg](https://twitter.com/AndreasGuldberg) - andreasgdp@gmail.com
 
-Project Link: [https://github.com/andreasgdp/Drawing-robot-semester-1](https://github.com/andreasgdp/Drawing-robot-semester-1)
+Project Link: [https://github.com/andreasgdp/Robot-hand-semester-2](https://github.com/andreasgdp/Robot-hand-semester-2)
 
 
 
@@ -177,16 +177,16 @@ Project Link: [https://github.com/andreasgdp/Drawing-robot-semester-1](https://g
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/andreasgdp/Drawing-robot-semester-1.svg?style=flat-square
-[contributors-url]: https://github.com/andreasgdp/Drawing-robot-semester-1/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/andreasgdp/Drawing-robot-semester-1.svg?style=flat-square
-[forks-url]: https://github.com/andreasgdp/Drawing-robot-semester-1/network/members
-[stars-shield]: https://img.shields.io/github/stars/andreasgdp/Drawing-robot-semester-1.svg?style=flat-square
-[stars-url]: https://github.com/andreasgdp/Drawing-robot-semester-1/stargazers
-[issues-shield]: https://img.shields.io/github/issues/andreasgdp/Drawing-robot-semester-1.svg?style=flat-square
-[issues-url]: https://github.com/andreasgdp/Drawing-robot-semester-1/issues
-[license-shield]: https://img.shields.io/github/license/andreasgdp/Drawing-robot-semester-1.svg?style=flat-square
-[license-url]: https://github.com/andreasgdp/Drawing-robot-semester-1/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/andreasgdp/Robot-hand-semester-2.svg?style=flat-square
+[contributors-url]: https://github.com/andreasgdp/Robot-hand-semester-2/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/andreasgdp/Robot-hand-semester-2.svg?style=flat-square
+[forks-url]: https://github.com/andreasgdp/Robot-hand-semester-2/network/members
+[stars-shield]: https://img.shields.io/github/stars/andreasgdp/Robot-hand-semester-2.svg?style=flat-square
+[stars-url]: https://github.com/andreasgdp/Robot-hand-semester-2/stargazers
+[issues-shield]: https://img.shields.io/github/issues/andreasgdp/Robot-hand-semester-2.svg?style=flat-square
+[issues-url]: https://github.com/andreasgdp/Robot-hand-semester-2/issues
+[license-shield]: https://img.shields.io/github/license/andreasgdp/Robot-hand-semester-2.svg?style=flat-square
+[license-url]: https://github.com/andreasgdp/Robot-hand-semester-2/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/andreas-g-d-petersen-11707518b/
 [product-screenshot]: images_readme/robot_arm.jpg
