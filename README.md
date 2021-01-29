@@ -189,4 +189,4 @@ Project Link: [https://github.com/andreasgdp/Robot-hand-semester-2](https://gith
 [license-url]: https://github.com/andreasgdp/Robot-hand-semester-2/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/andreas-g-d-petersen-11707518b/
-[product-screenshot]: images_readme/robot_arm.jpg
+[product-screenshot]: images_readme/robot_hand.jpg
