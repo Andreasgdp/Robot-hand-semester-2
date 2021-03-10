@@ -1,1 +1,1 @@
-# Cpp program to run on Rasbarry PI and PC
+# Cpp program to run on Rasberry PI and PC
