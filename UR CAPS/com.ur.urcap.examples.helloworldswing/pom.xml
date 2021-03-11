@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ur.urcap.examples</groupId>
-	<artifactId>helloworldswing</artifactId>
+	<artifactId>beergripperswing</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>Hello World Swing</name>
 	<packaging>bundle</packaging>
@@ -18,7 +16,7 @@
 		<!--         that comes along with your URCap                           -->
 		<!--********************************************************************-->
 		<!--******************* BEGINNING OF URCAP META DATA *******************-->
-		<urcap.symbolicname>com.ur.urcap.examples.helloworldswing</urcap.symbolicname>
+		<urcap.symbolicname>com.ur.urcap.examples.beergripperswing</urcap.symbolicname>
 		<urcap.vendor>Universal Robots</urcap.vendor>
 		<urcap.contactAddress>Energivej 25, 5260 Odense S, Denmark</urcap.contactAddress>
 		<urcap.copyright>Copyright (C) 2009-${copyright.year} Universal Robots. All Rights Reserved</urcap.copyright>
@@ -92,16 +90,16 @@
 					<execution>
 						<id>bundle-manifest</id>
 						<phase>process-classes</phase>
-							<goals>
-								<goal>manifest</goal>
-							</goals>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
 					</execution>
 				</executions>
 				<configuration>
 					<instructions>
 						<!--********** DO NOT MODIFY THE ENTRIES OF THIS SECTION **********-->
 						<Bundle-Category>URCap</Bundle-Category>
-						<Bundle-Activator>com.ur.urcap.examples.helloworldswing.impl.Activator</Bundle-Activator>
+						<Bundle-Activator>com.ur.urcap.examples.beergripperswing.impl.Activator</Bundle-Activator>
 						<Bundle-Vendor>${urcap.vendor}</Bundle-Vendor>
 						<Bundle-ContactAddress>${urcap.contactAddress}</Bundle-ContactAddress>
 						<Bundle-Copyright>${urcap.copyright}</Bundle-Copyright>
@@ -129,7 +127,7 @@
 						</goals>
 						<configuration>
 							<executable>cp</executable>
-								<commandlineArgs>target/${project.build.finalName}.jar target/${project.build.finalName}.urcap</commandlineArgs>
+							<commandlineArgs>target/${project.build.finalName}.jar target/${project.build.finalName}.urcap</commandlineArgs>
 							<workingDirectory>.</workingDirectory>
 						</configuration>
 					</execution>

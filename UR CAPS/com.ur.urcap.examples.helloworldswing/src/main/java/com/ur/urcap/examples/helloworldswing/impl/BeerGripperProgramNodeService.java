@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.helloworldswing.impl;
+package com.ur.urcap.examples.beergripperswing.impl;
 
 import com.ur.urcap.api.contribution.ViewAPIProvider;
 import com.ur.urcap.api.contribution.program.ContributionConfiguration;
@@ -10,11 +10,11 @@ import com.ur.urcap.api.domain.data.DataModel;
 
 import java.util.Locale;
 
-public class HelloWorldProgramNodeService implements SwingProgramNodeService<HelloWorldProgramNodeContribution, HelloWorldProgramNodeView> {
+public class BeerGripperProgramNodeService implements SwingProgramNodeService<BeerGripperProgramNodeContribution, BeerGripperProgramNodeView> {
 
 	@Override
 	public String getId() {
-		return "HelloWorldSwingNode";
+		return "BeerGripperSwingNode";
 	}
 
 	@Override
@@ -34,18 +34,18 @@ public class HelloWorldProgramNodeService implements SwingProgramNodeService<Hel
 	}
 
 	@Override
-	public HelloWorldProgramNodeView createView(ViewAPIProvider apiProvider) {
+	public BeerGripperProgramNodeView createView(ViewAPIProvider apiProvider) {
 		SystemAPI systemAPI = apiProvider.getSystemAPI();
 		Style style = systemAPI.getSoftwareVersion().getMajorVersion() >= 5 ? new V5Style() : new V3Style();
-		return new HelloWorldProgramNodeView(style);
+		return new BeerGripperProgramNodeView(style);
 	}
 
 	@Override
-	public HelloWorldProgramNodeContribution createNode(
+	public BeerGripperProgramNodeContribution createNode(
 			ProgramAPIProvider apiProvider,
-			HelloWorldProgramNodeView view,
+			BeerGripperProgramNodeView view,
 			DataModel model,
 			CreationContext context) {
-		return new HelloWorldProgramNodeContribution(apiProvider, view, model);
+		return new BeerGripperProgramNodeContribution(apiProvider, view, model);
 	}
 }

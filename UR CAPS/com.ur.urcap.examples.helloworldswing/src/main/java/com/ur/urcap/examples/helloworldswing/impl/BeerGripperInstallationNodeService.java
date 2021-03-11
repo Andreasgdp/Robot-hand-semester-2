@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.helloworldswing.impl;
+package com.ur.urcap.examples.beergripperswing.impl;
 
 import com.ur.urcap.api.contribution.ViewAPIProvider;
 import com.ur.urcap.api.contribution.installation.ContributionConfiguration;
@@ -10,7 +10,7 @@ import com.ur.urcap.api.domain.data.DataModel;
 
 import java.util.Locale;
 
-public class HelloWorldInstallationNodeService implements SwingInstallationNodeService<HelloWorldInstallationNodeContribution, HelloWorldInstallationNodeView> {
+public class BeerGripperInstallationNodeService implements SwingInstallationNodeService<BeerGripperInstallationNodeContribution, BeerGripperInstallationNodeView> {
 
 	@Override
 	public void configureContribution(ContributionConfiguration configuration) {
@@ -22,14 +22,14 @@ public class HelloWorldInstallationNodeService implements SwingInstallationNodeS
 	}
 
 	@Override
-	public HelloWorldInstallationNodeView createView(ViewAPIProvider apiProvider) {
+	public BeerGripperInstallationNodeView createView(ViewAPIProvider apiProvider) {
 		SystemAPI systemAPI = apiProvider.getSystemAPI();
 		Style style = systemAPI.getSoftwareVersion().getMajorVersion() >= 5 ? new V5Style() : new V3Style();
-		return new HelloWorldInstallationNodeView(style);
+		return new BeerGripperInstallationNodeView(style);
 	}
 
 	@Override
-	public HelloWorldInstallationNodeContribution createInstallationNode(InstallationAPIProvider apiProvider, HelloWorldInstallationNodeView view, DataModel model, CreationContext context) {
-		return new HelloWorldInstallationNodeContribution(apiProvider, model, view);
+	public BeerGripperInstallationNodeContribution createInstallationNode(InstallationAPIProvider apiProvider, BeerGripperInstallationNodeView view, DataModel model, CreationContext context) {
+		return new BeerGripperInstallationNodeContribution(apiProvider, model, view);
 	}
 }

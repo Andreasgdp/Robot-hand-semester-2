@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.helloworldswing.impl;
+package com.ur.urcap.examples.beergripperswing.impl;
 
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
@@ -15,19 +15,19 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class HelloWorldProgramNodeView implements SwingProgramNodeView<HelloWorldProgramNodeContribution>{
+public class BeerGripperProgramNodeView implements SwingProgramNodeView<BeerGripperProgramNodeContribution>{
 
 	private final Style style;
 	private JTextField jTextField;
 	private JLabel previewTitle;
 	private JLabel previewMessage;
 
-	public HelloWorldProgramNodeView(Style style) {
+	public BeerGripperProgramNodeView(Style style) {
 		this.style = style;
 	}
 
 	@Override
-	public void buildUI(JPanel jPanel, final ContributionProvider<HelloWorldProgramNodeContribution> provider) {
+	public void buildUI(JPanel jPanel, final ContributionProvider<BeerGripperProgramNodeContribution> provider) {
 		jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
 
 		jPanel.add(createInfo());
@@ -44,7 +44,7 @@ public class HelloWorldProgramNodeView implements SwingProgramNodeView<HelloWorl
 		return infoBox;
 	}
 
-	private Box createInput(final ContributionProvider<HelloWorldProgramNodeContribution> provider) {
+	private Box createInput(final ContributionProvider<BeerGripperProgramNodeContribution> provider) {
 		Box inputBox = Box.createHorizontalBox();
 		inputBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 		inputBox.add(new JLabel("Enter your name:"));

@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.helloworldswing.impl;
+package com.ur.urcap.examples.beergripperswing.impl;
 
 import com.ur.urcap.api.contribution.InstallationNodeContribution;
 import com.ur.urcap.api.contribution.installation.InstallationAPIProvider;
@@ -8,16 +8,16 @@ import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardInputCallback;
 import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardInputFactory;
 import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardTextInput;
 
-public class HelloWorldInstallationNodeContribution implements InstallationNodeContribution {
+public class BeerGripperInstallationNodeContribution implements InstallationNodeContribution {
 
 	private static final String POPUPTITLE_KEY = "popuptitle";
 	private static final String DEFAULT_VALUE = "Hello World";
-	private final HelloWorldInstallationNodeView view;
+	private final BeerGripperInstallationNodeView view;
 	private final KeyboardInputFactory keyboardFactory;
 
 	private DataModel model;
 
-	public HelloWorldInstallationNodeContribution(InstallationAPIProvider apiProvider, DataModel model, HelloWorldInstallationNodeView view) {
+	public BeerGripperInstallationNodeContribution(InstallationAPIProvider apiProvider, DataModel model, BeerGripperInstallationNodeView view) {
 		this.keyboardFactory = apiProvider.getUserInterfaceAPI().getUserInteraction().getKeyboardInputFactory();
 		this.model = model;
 		this.view = view;

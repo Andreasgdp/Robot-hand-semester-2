@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.helloworldswing.impl;
+package com.ur.urcap.examples.beergripperswing.impl;
 
 import com.ur.urcap.api.contribution.installation.swing.SwingInstallationNodeView;
 import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardTextInput;
@@ -17,17 +17,17 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class HelloWorldInstallationNodeView implements SwingInstallationNodeView<HelloWorldInstallationNodeContribution> {
+public class BeerGripperInstallationNodeView implements SwingInstallationNodeView<BeerGripperInstallationNodeContribution> {
 
 	private final Style style;
 	private JTextField jTextField;
 
-	public HelloWorldInstallationNodeView(Style style) {
+	public BeerGripperInstallationNodeView(Style style) {
 		this.style = style;
 	}
 
 	@Override
-	public void buildUI(JPanel jPanel, final HelloWorldInstallationNodeContribution installationNode) {
+	public void buildUI(JPanel jPanel, final BeerGripperInstallationNodeContribution installationNode) {
 		jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
 
 		jPanel.add(createInfo());
@@ -52,7 +52,7 @@ public class HelloWorldInstallationNodeView implements SwingInstallationNodeView
 		return infoBox;
 	}
 
-	private Box createInput(final HelloWorldInstallationNodeContribution installationNode) {
+	private Box createInput(final BeerGripperInstallationNodeContribution installationNode) {
 		Box inputBox = Box.createHorizontalBox();
 		inputBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 

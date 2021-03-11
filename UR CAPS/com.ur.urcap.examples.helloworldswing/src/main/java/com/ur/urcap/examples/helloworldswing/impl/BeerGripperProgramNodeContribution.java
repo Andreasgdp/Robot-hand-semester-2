@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.helloworldswing.impl;
+package com.ur.urcap.examples.beergripperswing.impl;
 
 import com.ur.urcap.api.contribution.ProgramNodeContribution;
 import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
@@ -11,17 +11,17 @@ import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardInputCallback;
 import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardInputFactory;
 import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardTextInput;
 
-public class HelloWorldProgramNodeContribution implements ProgramNodeContribution {
+public class BeerGripperProgramNodeContribution implements ProgramNodeContribution {
 	private static final String NAME = "name";
 
 	private final ProgramAPI programAPI;
 	private final UndoRedoManager undoRedoManager;
 	private final KeyboardInputFactory keyboardFactory;
 
-	private final HelloWorldProgramNodeView view;
+	private final BeerGripperProgramNodeView view;
 	private final DataModel model;
 
-	public HelloWorldProgramNodeContribution(ProgramAPIProvider apiProvider, HelloWorldProgramNodeView view, DataModel model) {
+	public BeerGripperProgramNodeContribution(ProgramAPIProvider apiProvider, BeerGripperProgramNodeView view, DataModel model) {
 		this.programAPI = apiProvider.getProgramAPI();
 		this.undoRedoManager = apiProvider.getProgramAPI().getUndoRedoManager();
 		this.keyboardFactory = apiProvider.getUserInterfaceAPI().getUserInteraction().getKeyboardInputFactory();
@@ -101,8 +101,8 @@ public class HelloWorldProgramNodeContribution implements ProgramNodeContributio
 		return model.get(NAME, "");
 	}
 
-	private HelloWorldInstallationNodeContribution getInstallation() {
-		return programAPI.getInstallationNode(HelloWorldInstallationNodeContribution.class);
+	private BeerGripperInstallationNodeContribution getInstallation() {
+		return programAPI.getInstallationNode(BeerGripperInstallationNodeContribution.class);
 	}
 
 }
