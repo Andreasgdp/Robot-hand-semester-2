@@ -11,13 +11,14 @@ import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardTextInput;
 public class BeerGripperInstallationNodeContribution implements InstallationNodeContribution {
 
 	private static final String POPUPTITLE_KEY = "popuptitle";
-	private static final String DEFAULT_VALUE = "Hello World";
+	private static final String DEFAULT_VALUE = "Beer Gripper";
 	private final BeerGripperInstallationNodeView view;
 	private final KeyboardInputFactory keyboardFactory;
 
 	private DataModel model;
 
-	public BeerGripperInstallationNodeContribution(InstallationAPIProvider apiProvider, DataModel model, BeerGripperInstallationNodeView view) {
+	public BeerGripperInstallationNodeContribution(InstallationAPIProvider apiProvider, DataModel model,
+			BeerGripperInstallationNodeView view) {
 		this.keyboardFactory = apiProvider.getUserInterfaceAPI().getUserInteraction().getKeyboardInputFactory();
 		this.model = model;
 		this.view = view;
@@ -39,7 +40,8 @@ public class BeerGripperInstallationNodeContribution implements InstallationNode
 
 	@Override
 	public void generateScript(ScriptWriter writer) {
-		// Store the popup title in a global variable so it is globally available to all Hello World program nodes.
+		// Store the popup title in a global variable so it is globally available to all
+		// Beer Gripper program nodes.
 		writer.assign("hello_world_swing_popup_title", "\"" + getPopupTitle() + "\"");
 	}
 

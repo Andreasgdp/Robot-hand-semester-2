@@ -7,10 +7,10 @@ Bundle-Category: URCap
 Bundle-ContactAddress: Energivej 25, 5260 Odense S, Denmark
 Bundle-Copyright: Copyright (C) 2009-2021 Universal Robots. All Rights R
  eserved
-Bundle-Description: Hello World Swing sample URCap
+Bundle-Description: Beer Gripper Swing sample URCap
 Bundle-LicenseType: Sample license
 Bundle-ManifestVersion: 2
-Bundle-Name: Hello World Swing
+Bundle-Name: Beer Gripper Swing
 Bundle-SymbolicName: com.ur.urcap.examples.beergripperswing
 Bundle-Vendor: Universal Robots
 Bundle-Version: 1.0.0.SNAPSHOT

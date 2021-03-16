@@ -17,7 +17,8 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class BeerGripperInstallationNodeView implements SwingInstallationNodeView<BeerGripperInstallationNodeContribution> {
+public class BeerGripperInstallationNodeView
+		implements SwingInstallationNodeView<BeerGripperInstallationNodeContribution> {
 
 	private final Style style;
 	private JTextField jTextField;
@@ -44,7 +45,8 @@ public class BeerGripperInstallationNodeView implements SwingInstallationNodeVie
 		StyleConstants.setLineSpacing(attributeSet, 0.5f);
 		StyleConstants.setLeftIndent(attributeSet, 0f);
 		pane.setParagraphAttributes(attributeSet, false);
-		pane.setText("The popup title below is shared between all Hello World program nodes.\nThe title cannot be empty.");
+		pane.setText(
+				"The popup title below is shared between all Beer Gripper program nodes.\nThe title cannot be empty.");
 		pane.setEditable(false);
 		pane.setMaximumSize(pane.getPreferredSize());
 		pane.setBackground(infoBox.getBackground());

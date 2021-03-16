@@ -21,7 +21,8 @@ public class BeerGripperProgramNodeContribution implements ProgramNodeContributi
 	private final BeerGripperProgramNodeView view;
 	private final DataModel model;
 
-	public BeerGripperProgramNodeContribution(ProgramAPIProvider apiProvider, BeerGripperProgramNodeView view, DataModel model) {
+	public BeerGripperProgramNodeContribution(ProgramAPIProvider apiProvider, BeerGripperProgramNodeView view,
+			DataModel model) {
 		this.programAPI = apiProvider.getProgramAPI();
 		this.undoRedoManager = apiProvider.getProgramAPI().getUndoRedoManager();
 		this.keyboardFactory = apiProvider.getUserInterfaceAPI().getUserInteraction().getKeyboardInputFactory();
@@ -42,7 +43,7 @@ public class BeerGripperProgramNodeContribution implements ProgramNodeContributi
 
 	@Override
 	public String getTitle() {
-		return "Hello World: " + (model.isSet(NAME) ? getName() : "");
+		return "Beer Gripper: " + (model.isSet(NAME) ? getName() : "");
 	}
 
 	@Override
@@ -52,8 +53,10 @@ public class BeerGripperProgramNodeContribution implements ProgramNodeContributi
 
 	@Override
 	public void generateScript(ScriptWriter writer) {
-		// Directly generate this Program Node's popup message + access the popup title through a global variable
-		writer.appendLine("popup(\"" + generatePopupMessage() + "\", hello_world_swing_popup_title, False, False, blocking=True)");
+		// Directly generate this Program Node's popup message + access the popup title
+		// through a global variable
+		writer.appendLine("popup(\"" + generatePopupMessage()
+				+ "\", hello_world_swing_popup_title, False, False, blocking=True)");
 		writer.writeChildren();
 	}
 

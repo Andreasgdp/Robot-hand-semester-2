@@ -10,7 +10,8 @@ import com.ur.urcap.api.domain.data.DataModel;
 
 import java.util.Locale;
 
-public class BeerGripperInstallationNodeService implements SwingInstallationNodeService<BeerGripperInstallationNodeContribution, BeerGripperInstallationNodeView> {
+public class BeerGripperInstallationNodeService implements
+		SwingInstallationNodeService<BeerGripperInstallationNodeContribution, BeerGripperInstallationNodeView> {
 
 	@Override
 	public void configureContribution(ContributionConfiguration configuration) {
@@ -18,7 +19,7 @@ public class BeerGripperInstallationNodeService implements SwingInstallationNode
 
 	@Override
 	public String getTitle(Locale locale) {
-		return "Hello World";
+		return "Beer Gripper";
 	}
 
 	@Override
@@ -29,7 +30,8 @@ public class BeerGripperInstallationNodeService implements SwingInstallationNode
 	}
 
 	@Override
-	public BeerGripperInstallationNodeContribution createInstallationNode(InstallationAPIProvider apiProvider, BeerGripperInstallationNodeView view, DataModel model, CreationContext context) {
+	public BeerGripperInstallationNodeContribution createInstallationNode(InstallationAPIProvider apiProvider,
+			BeerGripperInstallationNodeView view, DataModel model, CreationContext context) {
 		return new BeerGripperInstallationNodeContribution(apiProvider, model, view);
 	}
 }

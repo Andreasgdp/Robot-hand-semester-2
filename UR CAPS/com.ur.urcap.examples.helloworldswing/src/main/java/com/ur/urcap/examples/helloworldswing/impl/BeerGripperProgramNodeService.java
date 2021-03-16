@@ -10,7 +10,8 @@ import com.ur.urcap.api.domain.data.DataModel;
 
 import java.util.Locale;
 
-public class BeerGripperProgramNodeService implements SwingProgramNodeService<BeerGripperProgramNodeContribution, BeerGripperProgramNodeView> {
+public class BeerGripperProgramNodeService
+		implements SwingProgramNodeService<BeerGripperProgramNodeContribution, BeerGripperProgramNodeView> {
 
 	@Override
 	public String getId() {
@@ -24,7 +25,7 @@ public class BeerGripperProgramNodeService implements SwingProgramNodeService<Be
 
 	@Override
 	public String getTitle(Locale locale) {
-		String title = "Hello World";
+		String title = "Beer Gripper";
 		if ("ru".equals(locale.getLanguage())) {
 			title = "Привет мир";
 		} else if ("de".equals(locale.getLanguage())) {
@@ -41,11 +42,8 @@ public class BeerGripperProgramNodeService implements SwingProgramNodeService<Be
 	}
 
 	@Override
-	public BeerGripperProgramNodeContribution createNode(
-			ProgramAPIProvider apiProvider,
-			BeerGripperProgramNodeView view,
-			DataModel model,
-			CreationContext context) {
+	public BeerGripperProgramNodeContribution createNode(ProgramAPIProvider apiProvider,
+			BeerGripperProgramNodeView view, DataModel model, CreationContext context) {
 		return new BeerGripperProgramNodeContribution(apiProvider, view, model);
 	}
 }
