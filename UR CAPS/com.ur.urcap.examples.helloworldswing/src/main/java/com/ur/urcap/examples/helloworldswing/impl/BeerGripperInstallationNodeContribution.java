@@ -42,7 +42,7 @@ public class BeerGripperInstallationNodeContribution implements InstallationNode
 	public void generateScript(ScriptWriter writer) {
 		// Store the popup title in a global variable so it is globally available to all
 		// Beer Gripper program nodes.
-		writer.assign("hello_world_swing_popup_title", "\"" + getPopupTitle() + "\"");
+		writer.assign("beer_gripper_swing_popup_title", "\"" + getPopupTitle() + "\"");
 	}
 
 	public String getPopupTitle() {

@@ -56,7 +56,7 @@ public class BeerGripperProgramNodeContribution implements ProgramNodeContributi
 		// Directly generate this Program Node's popup message + access the popup title
 		// through a global variable
 		writer.appendLine("popup(\"" + generatePopupMessage()
-				+ "\", hello_world_swing_popup_title, False, False, blocking=True)");
+				+ "\", beer_gripper_swing_popup_title, False, False, blocking=True)");
 		writer.writeChildren();
 	}
 
