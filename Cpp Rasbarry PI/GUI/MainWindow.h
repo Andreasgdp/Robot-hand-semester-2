@@ -15,6 +15,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    bool gripperState = 0;
+
+private slots:
+    void on_btConnect_clicked();
+
+    void on_btOpen_clicked();
+
+    void on_btClose_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
