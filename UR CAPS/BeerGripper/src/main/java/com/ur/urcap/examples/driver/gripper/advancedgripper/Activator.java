@@ -8,8 +8,6 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void start(final BundleContext context) {
-        Logging logger = new Logging();
-        logger.logCodeRun("Activator", "start()");
 
 		context.registerService(GripperContribution.class, new AdvancedGripper(), null);
 	}

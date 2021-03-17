@@ -31,22 +31,16 @@ public class AdvancedGripper implements GripperContribution {
 
 	@Override
 	public String getTitle(Locale locale) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "getTitle()");
 		return GRIPPER_NAME;
 	}
 
 	@Override
 	public void configureContribution(ContributionConfiguration configuration) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "configureContribution()");
 		configuration.setLogo(new ImageIcon(getClass().getResource("/logo/logo.png")));
 	}
 
 	@Override
 	public void configureGripper(GripperConfiguration gripperConfiguration, GripperAPIProvider gripperAPIProvider) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "configureGripper()");
 		GripperCapabilities gripperCapabilities = gripperConfiguration.getGripperCapabilities();
 
 		registerForce(gripperCapabilities);
@@ -74,8 +68,6 @@ public class AdvancedGripper implements GripperContribution {
 	@Override
 	public void configureInstallation(CustomUserInputConfiguration configurationUIBuilder, SystemConfiguration systemConfiguration,
 									  TCPConfiguration tcpConfiguration, GripperAPIProvider gripperAPIProvider) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "configureInstallation()");
 		ControllableResourceModel resourceModel = systemConfiguration.getControllableResourceModel();
 
 		resourceModel.requestControl(new ToolIOController());
@@ -83,52 +75,38 @@ public class AdvancedGripper implements GripperContribution {
 
 	@Override
 	public void generatePreambleScript(ScriptWriter scriptWriter) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "generatePreambleScript()");
 		// Intentionally left empty
 	}
 
 	@Override
 	public void generateGripActionScript(ScriptWriter scriptWriter, GripActionParameters gripActionParameters) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "generateGripActionScript()");
+		// TODO: Implement grip action here.
 		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
 	}
 
 	@Override
 	public void generateReleaseActionScript(ScriptWriter scriptWriter, ReleaseActionParameters releaseActionParameters) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "generateReleaseActionScript()");
+		// TODO: Implement release action here.
 		System.out.println("Release action :" + printCapabilityParameters(releaseActionParameters));
 	}
 
 	private void registerWidth(GripperCapabilities capability) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "registerWidth()");
 		capability.registerWidthCapability(40, 100, 50, 60, Length.Unit.MM);
 	}
 
 	private void registerForce(GripperCapabilities capability) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "registerForce()");
 		capability.registerGrippingForceCapability(0, 100, 40, Force.Unit.N);
 	}
 
 	private void registerVacuum(GripperCapabilities capability) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "registerVacuum()");
 		capability.registerGrippingVacuumCapability(0, 100, 70, Pressure.Unit.KPA);
 	}
 
 	private void registerSpeed(GripperCapabilities capability) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "registerSpeed()");
 		capability.registerSpeedCapability(0, 100, 40, 50, Speed.Unit.MM_S);
 	}
 
 	private String printCapabilityParameters(GripActionParameters gripActionParameters) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "printCapabilityParameters(GripActionParameters gripActionParameters)");
 		return "\n" +
 				printWidthCapabilityParameter(gripActionParameters.getWidth()) + "\n" +
 				printSpeedCapabilityParameter(gripActionParameters.getSpeed()) + "\n" +
@@ -137,34 +115,24 @@ public class AdvancedGripper implements GripperContribution {
 	}
 
 	private String printCapabilityParameters(ReleaseActionParameters releaseActionParameters) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "printCapabilityParameters(ReleaseActionParameters releaseActionParameters)");
 		return "\n" +
 				printWidthCapabilityParameter(releaseActionParameters.getWidth()) + "\n" +
 				printSpeedCapabilityParameter(releaseActionParameters.getSpeed()) + "\n";
 	}
 
 	String printWidthCapabilityParameter(Length width) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "printWidthCapabilityParameter()");
 		return "Width: " + width.getAs(Length.Unit.MM) + " mm";
 	}
 
 	String printSpeedCapabilityParameter(Speed speed) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "printSpeedCapabilityParameter()");
 		return "Speed: " + speed.getAs(Speed.Unit.MM_S) + " mm/s";
 	}
 
 	String printForceCapabilityParameter(Force force) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "printForceCapabilityParameter()");
 		return "Force: " + force.getAs(Force.Unit.N) + " N";
 	}
 
 	String printVacuumCapabilityParameter(Pressure vacuum) {
-		Logging logger = new Logging();
-        logger.logCodeRun("AdvancedGripper", "printVacuumCapabilityParameter()");
 		return "Vacuum: " + vacuum.getAs(Pressure.Unit.KPA) + " kPa";
 	}
 }
