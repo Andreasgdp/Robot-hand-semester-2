@@ -15,7 +15,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    bool gripperState = 0;
+    int gripperState = 0;
+    std::string ipInputString = "";
+    std::string succesString = "";
 
 private slots:
     void on_btConnect_clicked();
@@ -23,6 +25,8 @@ private slots:
     void on_btOpen_clicked();
 
     void on_btClose_clicked();
+
+    void on_lConnect_textEdited(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
