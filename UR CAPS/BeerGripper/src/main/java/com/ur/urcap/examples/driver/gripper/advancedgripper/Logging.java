@@ -16,11 +16,11 @@ public class Logging implements ActionListener {
     }
 
     public void changeFile(String file) {
-        this.filePath =  "~/ursim/ursim-5.9.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper" + file + ".txt";
+        this.filePath =  "/home/ur/ursim/ursim-5.9.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper" + file + ".txt";
     }
 
     public void logCodeRun(String fileName, String functionName) {
-        changeFile(fileName + functionName);
+        this.changeFile(fileName + functionName);
         this.createFile();
         this.writeFile(fileName, functionName);
     }
