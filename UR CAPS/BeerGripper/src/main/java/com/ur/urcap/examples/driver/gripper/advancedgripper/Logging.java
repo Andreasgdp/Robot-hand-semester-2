@@ -1,13 +1,12 @@
 package com.ur.urcap.examples.driver.gripper.advancedgripper;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import java.io.File;  // Import the File class
 import java.io.FileWriter;   // Import the FileWriter class
 
-public class Logging implements ActionListener {
+public class Logging {
     private String filePath;
 
 
