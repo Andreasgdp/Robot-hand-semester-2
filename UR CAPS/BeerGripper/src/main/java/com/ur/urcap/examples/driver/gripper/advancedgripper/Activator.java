@@ -16,4 +16,3 @@ public class Activator implements BundleActivator {
 	public void stop(BundleContext context) {
 	}
 }
-
