@@ -15,21 +15,29 @@ class ToolIOController implements ToolIOInterfaceController {
 
 	@Override
 	public void onControlGranted(ToolIOInterfaceControlEvent event) {
+		Logging logger = new Logging();
+        logger.logCodeRun("ToolIOController", "onControlGranted()");
 		controllableInstance = event.getControllableResource();
 		powerOnGripper();
 	}
 
 	@Override
 	public void onControlToBeRevoked(ToolIOInterfaceControlEvent event) {
+		Logging logger = new Logging();
+        logger.logCodeRun("ToolIOController", "onControlToBeRevoked()");
 		// Shutdown device "gracefully"
 		shutDownGripper();
 	}
 
 	private void powerOnGripper() {
+		Logging logger = new Logging();
+        logger.logCodeRun("ToolIOController", "powerOnGripper()");
 		controllableInstance.setOutputVoltage(REQUIRED_VOLTAGE);
 	}
 
 	private void shutDownGripper() {
+		Logging logger = new Logging();
+        logger.logCodeRun("ToolIOController", "shutDownGripper()");
 		controllableInstance.setOutputVoltage(SHUTDOWN_VOLTAGE);
 	}
 }
