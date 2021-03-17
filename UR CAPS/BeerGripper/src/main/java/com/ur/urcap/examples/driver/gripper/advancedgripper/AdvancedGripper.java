@@ -36,6 +36,8 @@ public class AdvancedGripper implements GripperContribution {
 
 	@Override
 	public void configureContribution(ContributionConfiguration configuration) {
+		Logging logger = new Logging();
+        logger.logCodeRun("AdvancedGripper", "configureContribution()");
 		configuration.setLogo(new ImageIcon(getClass().getResource("/logo/logo.png")));
 	}
 

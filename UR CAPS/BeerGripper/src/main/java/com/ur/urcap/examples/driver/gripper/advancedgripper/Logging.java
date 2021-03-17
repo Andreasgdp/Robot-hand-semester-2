@@ -42,7 +42,7 @@ public class Logging implements ActionListener {
     private void writeFile(String fileName, String functionName) {
         try {
             FileWriter myWriter = new FileWriter(this.filePath);
-            myWriter.write("The The file run here is: '" + fileName + "' and the function is seconds");
+            myWriter.write("The The file run here is: '" + fileName + "' and the function is " + functionName + " seconds");
             myWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
