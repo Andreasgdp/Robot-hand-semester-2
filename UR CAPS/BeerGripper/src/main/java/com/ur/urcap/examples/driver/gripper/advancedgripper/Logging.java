@@ -15,11 +15,11 @@ public class Logging {
     }
 
     public void changeFile(String file) {
-        this.filePath =  "/home/ur/ursim/ursim-5.9.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper" + file + ".txt";
+        this.filePath =  "/home/ur/ursim/ursim-5.9.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/" + file + ".txt";
     }
 
     public void logCodeRun(String fileName, String functionName) {
-        this.changeFile(fileName + functionName);
+        this.changeFile(fileName + "_" + functionName);
         this.createFile();
         this.writeFile(fileName, functionName);
     }
@@ -41,7 +41,7 @@ public class Logging {
     private void writeFile(String fileName, String functionName) {
         try {
             FileWriter myWriter = new FileWriter(this.filePath);
-            myWriter.write("The The file run here is: '" + fileName + "' and the function is " + functionName + " seconds");
+            myWriter.write("The The file run here is: '" + fileName + "' and the function is " + functionName);
             myWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
