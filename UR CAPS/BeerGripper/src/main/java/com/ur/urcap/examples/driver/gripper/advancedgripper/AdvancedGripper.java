@@ -48,20 +48,28 @@ public class AdvancedGripper implements GripperContribution {
 
 		GripperFeedbackCapabilities fc = gripperConfiguration.getGripperFeedbackCapabilities();
 		
-		String closeStatus = (GripperStatus.gripperPosStatus == "closed") ? "1" : "0";
+		boolean closeStatus = (GripperStatus.gripperPosStatus == "closed") ? true : false;
 
 		fc.registerGripDetectedCapability(new ScriptCodeGenerator<GripDetectedParameters>() {
 			@Override
 			public void generateScript(ScriptWriter scriptWriter, GripDetectedParameters parameters) {
-				scriptWriter.appendLine("return " +  closeStatus);
+				if (closeStatus) {
+					scriptWriter.appendLine("return 1");
+				} else {
+					scriptWriter.appendLine("return 0");
+				}
 			}
 		});
 		
-		String openStatus = (GripperStatus.gripperPosStatus == "open") ? "1" : "0";
+		boolean openStatus = (GripperStatus.gripperPosStatus == "open") ? true : false;
 		fc.registerReleaseDetectedCapability(new ScriptCodeGenerator<ReleaseDetectedParameters>() {
 			@Override
 			public void generateScript(ScriptWriter scriptWriter, ReleaseDetectedParameters parameters) {
-				scriptWriter.appendLine("return " +  openStatus);
+				if (openStatus) {
+					scriptWriter.appendLine("return 1");
+				} else {
+					scriptWriter.appendLine("return 0");
+				}
 			}
 		});
 	}
@@ -120,7 +128,7 @@ public class AdvancedGripper implements GripperContribution {
 				// 	}
 				// 	GripperStatus.client.reconnect();
 				// }
-				GripperStatus.gripperPosStatus = "closed";
+				GripperStatus.gripperPosStatus = "open";
 				System.out.println("I did it boss, I did the thing boss");
 		// System.out.println("Release action :" +
 		// printCapabilityParameters(releaseActionParameters));
