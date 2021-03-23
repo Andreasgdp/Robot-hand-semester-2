@@ -4,6 +4,9 @@ import com.ur.urcap.api.contribution.driver.gripper.GripperContribution;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+
+
+
 public class Activator implements BundleActivator {
 
 	@Override

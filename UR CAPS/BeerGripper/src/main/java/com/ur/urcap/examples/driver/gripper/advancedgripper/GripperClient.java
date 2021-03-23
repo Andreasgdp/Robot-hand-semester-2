@@ -37,6 +37,17 @@ public class GripperClient {
         this.port = port;
     }
 
+
+    /**
+     * Sets new hostname and port for the connection.
+     * @param hostname Hostname of the robot
+     * @param port     Port of the robot
+     */
+    public void reconfigureClient(String hostname, int port) {
+        this.hostname = hostname;
+        this.port = port;
+    }
+
     /**
      * Method which connects to the robot, using the parameters provided to the
      * constructor.
@@ -79,10 +90,6 @@ public class GripperClient {
             if (waitVariable == null) {
                 waitVariable = "null";
             }
-
-            long startTime = System.currentTimeMillis();
-//            System.out.println(
-//                    "Message: " + message + " Wait: " + waitVariable + " Check: " + (waitVariable.equals(message)));
 
             while (!waitVariable.equals(message)) {
                 waitVariable = this.read();

@@ -24,6 +24,11 @@ import com.ur.urcap.api.domain.value.simple.Speed;
 import javax.swing.ImageIcon;
 import java.util.Locale;
 
+public class GripperStatus {
+    public static RobotClient client = new RobotClient("192.168.0.20", 2050);
+	public static String gripperPosStatus = "open";
+}
+
 public class AdvancedGripper implements GripperContribution {
 
 	private static final String GRIPPER_NAME = "Advanced Gripper";
@@ -44,22 +49,24 @@ public class AdvancedGripper implements GripperContribution {
 
 		registerForce(gripperCapabilities);
 		registerWidth(gripperCapabilities);
-		registerVacuum(gripperCapabilities);
 		registerSpeed(gripperCapabilities);
 
 		GripperFeedbackCapabilities fc = gripperConfiguration.getGripperFeedbackCapabilities();
+		
+		String closeStatus = (GripperStatus.gripperPosStatus == "closed") ? "1" : "0";
 
 		fc.registerGripDetectedCapability(new ScriptCodeGenerator<GripDetectedParameters>() {
 			@Override
 			public void generateScript(ScriptWriter scriptWriter, GripDetectedParameters parameters) {
-				scriptWriter.appendLine("return get_standard_digital_in(0)");
+				scriptWriter.appendLine("return " +  closeStatus);
 			}
 		});
-
+		
+		String openStatus = (GripperStatus.gripperPosStatus == "open") ? "1" : "0";
 		fc.registerReleaseDetectedCapability(new ScriptCodeGenerator<ReleaseDetectedParameters>() {
 			@Override
 			public void generateScript(ScriptWriter scriptWriter, ReleaseDetectedParameters parameters) {
-				scriptWriter.appendLine("return get_standard_digital_in(1)");
+				scriptWriter.appendLine("return " +  openStatus);
 			}
 		});
 	}
@@ -75,20 +82,51 @@ public class AdvancedGripper implements GripperContribution {
 
 	@Override
 	public void generatePreambleScript(ScriptWriter scriptWriter) {
-		// Intentionally left empty
+		// GripperStatus.client.reconfigureClient("192.168.0.20", 2050);
+		// //this function tries to connect to the Gripper
+		// try {
+		// 	GripperStatus.client.connect();
+		// } catch (Exception e) {
+		// 	System.out.println("Cannot connect to Gripper. ERR: " + e);
+		// }
 	}
+
+	// Added API support for querying the enablement state of the grip/release detection option in the Gripper program node when generating script code for grip and release actions (in calls to the ‘generateGripActionScript(ScriptWriter, GripActionParameters)’ and ‘generateReleaseActionScript(ScriptWriter, ReleaseActionParameters)’ methods in the ‘GripperContribution’ interface):
 
 	@Override
 	public void generateGripActionScript(ScriptWriter scriptWriter, GripActionParameters gripActionParameters) {
-		// TODO: Implement grip action here.
+
+		// GripperStatus.client.reconnect();
+		// writeSuccess = GripperStatus.client.write("Close" + printCapabilityParameters(gripActionParameters));
+
+		// if (writeSuccess) {
+		// 	String waitVariable = null;
+		// 	while (waitVariable.compareTo("gripperClosed") != 0) {
+		// 		waitVariable = GripperStatus.client.read();
+		// 	}
+		// 	GripperStatus.client.reconnect();
+		// }
+
+		GripperStatus.gripperPosStatus = "closed";
+
 		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
 	}
 
 	@Override
 	public void generateReleaseActionScript(ScriptWriter scriptWriter,
 			ReleaseActionParameters releaseActionParameters) {
-		// TODO: Implement release action here.
-		System.out.println("I did it boss, I did the thing boss");
+				// GripperStatus.client.reconnect();
+				// writeSuccess = GripperStatus.client.write("Open" + printCapabilityParameters(releaseActionParameters));
+		
+				// if (writeSuccess) {
+				// 	String waitVariable = null;
+				// 	while (waitVariable.compareTo("gripperOpened") != 0) {
+				// 		waitVariable = GripperStatus.client.read();
+				// 	}
+				// 	GripperStatus.client.reconnect();
+				// }
+				GripperStatus.gripperPosStatus = "closed";
+				System.out.println("I did it boss, I did the thing boss");
 		// System.out.println("Release action :" +
 		// printCapabilityParameters(releaseActionParameters));
 	}
@@ -101,39 +139,30 @@ public class AdvancedGripper implements GripperContribution {
 		capability.registerGrippingForceCapability(0, 100, 40, Force.Unit.N);
 	}
 
-	private void registerVacuum(GripperCapabilities capability) {
-		capability.registerGrippingVacuumCapability(0, 100, 70, Pressure.Unit.KPA);
-	}
-
 	private void registerSpeed(GripperCapabilities capability) {
 		capability.registerSpeedCapability(0, 100, 40, 50, Speed.Unit.MM_S);
 	}
 
 	private String printCapabilityParameters(GripActionParameters gripActionParameters) {
-		return "\n" + printWidthCapabilityParameter(gripActionParameters.getWidth()) + "\n"
-				+ printSpeedCapabilityParameter(gripActionParameters.getSpeed()) + "\n"
-				+ printForceCapabilityParameter(gripActionParameters.getForce()) + "\n"
-				+ printVacuumCapabilityParameter(gripActionParameters.getVacuum()) + "\n";
+		return "?" + printWidthCapabilityParameter(gripActionParameters.getWidth()) + "?"
+				+ printSpeedCapabilityParameter(gripActionParameters.getSpeed()) + "?"
+				+ printForceCapabilityParameter(gripActionParameters.getForce()) + "?";
 	}
 
 	private String printCapabilityParameters(ReleaseActionParameters releaseActionParameters) {
-		return "\n" + printWidthCapabilityParameter(releaseActionParameters.getWidth()) + "\n"
-				+ printSpeedCapabilityParameter(releaseActionParameters.getSpeed()) + "\n";
+		return "?" + printWidthCapabilityParameter(releaseActionParameters.getWidth()) + "?"
+				+ printSpeedCapabilityParameter(releaseActionParameters.getSpeed()) + "?";
 	}
 
 	String printWidthCapabilityParameter(Length width) {
-		return "Width: " + width.getAs(Length.Unit.MM) + " mm";
+		return width.getAs(Length.Unit.MM) + " mm";
 	}
 
 	String printSpeedCapabilityParameter(Speed speed) {
-		return "Speed: " + speed.getAs(Speed.Unit.MM_S) + " mm/s";
+		return speed.getAs(Speed.Unit.MM_S) + " mm/s";
 	}
 
 	String printForceCapabilityParameter(Force force) {
-		return "Force: " + force.getAs(Force.Unit.N) + " N";
-	}
-
-	String printVacuumCapabilityParameter(Pressure vacuum) {
-		return "Vacuum: " + vacuum.getAs(Pressure.Unit.KPA) + " kPa";
+		return force.getAs(Force.Unit.N) + " N";
 	}
 }
