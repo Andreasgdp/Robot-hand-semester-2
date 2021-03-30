@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.driver.general.advancedgripper;
+package com.ur.urcap.examples.driver.gripper.advancedgripper;
 
 import com.ur.urcap.api.contribution.driver.general.tcp.TCPConfiguration;
 import com.ur.urcap.api.contribution.driver.general.userinput.CustomUserInputConfiguration;

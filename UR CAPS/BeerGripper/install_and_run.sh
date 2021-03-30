@@ -1,3 +1,3 @@
 mvn install
-cd ~/ursim/ursim-5.9.1.1031110
+cd ~/ursim/ursim-3.14.1.1031110
 ./start-ursim.sh
