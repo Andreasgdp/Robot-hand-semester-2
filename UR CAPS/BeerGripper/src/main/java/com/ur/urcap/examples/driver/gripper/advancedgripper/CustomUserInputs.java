@@ -105,7 +105,7 @@ public class CustomUserInputs implements GripperContribution {
 			@Override
 			public boolean isValid(String value) {
 				// Custom validation of the IP address
-				if ("0.0.0.0".equals(value) || "127.0.0.1".equals(value)) {		// TODO: Make so reserved ip's cant be used
+				if ("0.0.0.0".equals(value)) {		// TODO: Make so reserved ip's cant be used
 					return false;
 				}
 
