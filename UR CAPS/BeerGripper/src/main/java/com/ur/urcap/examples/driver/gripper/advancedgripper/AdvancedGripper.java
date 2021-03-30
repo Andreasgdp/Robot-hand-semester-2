@@ -48,16 +48,18 @@ public class AdvancedGripper implements GripperContribution {
 
 		GripperFeedbackCapabilities fc = gripperConfiguration.getGripperFeedbackCapabilities();
 		
-		boolean closeStatus = (GripperStatus.gripperPosStatus == "closed") ? true : false;
+		// boolean closeStatus = (GripperStatus.gripperPosStatus == "closed") ? true : false;
 
 		fc.registerGripDetectedCapability(new ScriptCodeGenerator<GripDetectedParameters>() {
 			@Override
 			public void generateScript(ScriptWriter scriptWriter, GripDetectedParameters parameters) {
+				/*
 				if (closeStatus) {
 					scriptWriter.appendLine("return 1");
 				} else {
 					scriptWriter.appendLine("return 0");
 				}
+				*/
 			}
 		});
 		
@@ -65,11 +67,13 @@ public class AdvancedGripper implements GripperContribution {
 		fc.registerReleaseDetectedCapability(new ScriptCodeGenerator<ReleaseDetectedParameters>() {
 			@Override
 			public void generateScript(ScriptWriter scriptWriter, ReleaseDetectedParameters parameters) {
+				/*
 				if (openStatus) {
 					scriptWriter.appendLine("return 1");
 				} else {
 					scriptWriter.appendLine("return 0");
 				}
+				*/
 			}
 		});
 	}
@@ -110,28 +114,27 @@ public class AdvancedGripper implements GripperContribution {
 		// 	GripperStatus.client.reconnect();
 		// }
 
-		GripperStatus.gripperPosStatus = "closed";
+		// GripperStatus.gripperPosStatus = "closed";
 
 		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
 	}
 
 	@Override
-	public void generateReleaseActionScript(ScriptWriter scriptWriter,
-			ReleaseActionParameters releaseActionParameters) {
-				// GripperStatus.client.reconnect();
-				// writeSuccess = GripperStatus.client.write("Open" + printCapabilityParameters(releaseActionParameters));
+	public void generateReleaseActionScript(ScriptWriter scriptWriter, ReleaseActionParameters releaseActionParameters) {
+		// GripperStatus.client.reconnect();
+		// writeSuccess = GripperStatus.client.write("Open" + printCapabilityParameters(releaseActionParameters));
+
+		// if (writeSuccess) {
+		// 	String waitVariable = null;
+		// 	while (waitVariable.compareTo("gripperOpened") != 0) {
+		// 		waitVariable = GripperStatus.client.read();
+		// 	}
+		// 	GripperStatus.client.reconnect();
+		// }
+		// GripperStatus.gripperPosStatus = "open";
+		// System.out.println("I did it boss, I did the thing boss");
 		
-				// if (writeSuccess) {
-				// 	String waitVariable = null;
-				// 	while (waitVariable.compareTo("gripperOpened") != 0) {
-				// 		waitVariable = GripperStatus.client.read();
-				// 	}
-				// 	GripperStatus.client.reconnect();
-				// }
-				GripperStatus.gripperPosStatus = "open";
-				System.out.println("I did it boss, I did the thing boss");
-		// System.out.println("Release action :" +
-		// printCapabilityParameters(releaseActionParameters));
+		System.out.println("Release action :" + printCapabilityParameters(releaseActionParameters));
 	}
 
 	private void registerWidth(GripperCapabilities capability) {
