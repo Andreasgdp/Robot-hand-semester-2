@@ -10,7 +10,6 @@ public class Activator implements BundleActivator {
 	@Override
 	public void start(final BundleContext context) {
 		context.registerService(GripperContribution.class, new CustomUserInputs(), null);
-		context.registerService(GripperContribution.class, new AdvancedGripper(), null);
 	}
 
 	@Override
