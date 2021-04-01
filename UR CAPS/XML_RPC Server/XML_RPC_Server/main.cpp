@@ -13,14 +13,13 @@
 #include <xmlrpc-c/registry.hpp>
 #include <xmlrpc-c/server_abyss.hpp>
 
-class test : public xmlrpc_c::method {
+class ConnCheck : public xmlrpc_c::method {
 public:
-    test() {
+    ConnCheck() {
         this->_signature = "i:";
         this->_help = "Connection check function";
     }
-    void
-    execute(xmlrpc_c::paramList const& paramList, xmlrpc_c::value* const retvalP) {
+    void execute(xmlrpc_c::paramList const& paramList, xmlrpc_c::value* const retvalP) {
         std::cout << "Hello there!" << std::endl;
 
         *retvalP = xmlrpc_c::value_int(42);
@@ -33,10 +32,10 @@ int main()
     try {
         xmlrpc_c::registry myRegistry;
 
-        xmlrpc_c::methodPtr const areYouThere(new test);
+        xmlrpc_c::methodPtr const connCheck(new ConnCheck);
 
-        myRegistry.addMethod("are_you_there", areYouThere);
-        xmlrpc_c::serverAbyss myAbyssServer(xmlrpc_c::serverAbyss::constrOpt().registryP(&myRegistry).portNumber(7000));
+        myRegistry.addMethod("connCheck", connCheck);
+        xmlrpc_c::serverAbyss myAbyssServer(xmlrpc_c::serverAbyss::constrOpt().registryP(&myRegistry).portNumber(5000));
 
         myAbyssServer.run();
 

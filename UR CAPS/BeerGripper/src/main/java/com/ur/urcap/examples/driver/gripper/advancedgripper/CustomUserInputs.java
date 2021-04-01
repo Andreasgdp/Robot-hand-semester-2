@@ -100,7 +100,7 @@ public class CustomUserInputs implements GripperContribution {
 	}
 
 	private void registerIPAddressInput(CustomUserInputConfiguration configuration) {
-		ipAddress = configuration.registerIPAddressInput("ipAddress", "IP-address", "10.10.10.10");
+		ipAddress = configuration.registerIPAddressInput("ipAddress", "IP-address", "127.0.0.0");
 		ipAddress.setErrorValidator(new InputValidator<String>() {
 			@Override
 			public boolean isValid(String value) {
@@ -127,7 +127,7 @@ public class CustomUserInputs implements GripperContribution {
 	}
 
 	private void registerPortInput(CustomUserInputConfiguration configuration) {
-		port = configuration.registerIntegerInput("port", "Port", "", 10000, 0, 65535);
+		port = configuration.registerIntegerInput("port", "Port", "", 5000, 0, 65535);
 		
 		port.setValueChangedListener(new ValueChangedListener<Integer>() {
 			@Override
@@ -158,21 +158,22 @@ public class CustomUserInputs implements GripperContribution {
 
 	@Override
 	public void generatePreambleScript(ScriptWriter scriptWriter) {
-		// Intentionally left empty
+		scriptWriter.assign("XMLRPC_VARIABLE", "rpc_factory(\"xmlrpc\", \"http://127.0.0.1:5000/RPC2\")");
 	}
-
+	
 	@Override
 	public void generateGripActionScript(ScriptWriter scriptWriter, GripActionParameters gripActionParameters) {	// TODO: Use connection to send grip values
-		// Intentionally left empty
-		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
+		System.out.println("IP: " + ipAddress);
+		System.out.println("Port: " + port);
+		
+		scriptWriter.appendLine("XMLRPC_VARIABLE.connCheck()");
 
+		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
 	}
 	
 	@Override
 	public void generateReleaseActionScript(ScriptWriter scriptWriter, ReleaseActionParameters releaseActionParameters) {	// TODO: Use connection to send release values
-		// Intentionally left empty
 		System.out.println("Release action :" + printCapabilityParameters(releaseActionParameters));
-
 	}
 
 	private void registerWidth(GripperCapabilities capability) {
