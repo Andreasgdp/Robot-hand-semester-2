@@ -31,6 +31,14 @@ import javax.swing.ImageIcon;
 import java.util.Arrays;
 import java.util.Locale;
 
+import org.apache.xmlrpc.XmlRpcException;
+import org.apache.xmlrpc.client.XmlRpcClient;
+import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
 
 public class CustomUserInputs implements GripperContribution {
 
@@ -42,6 +50,8 @@ public class CustomUserInputs implements GripperContribution {
 	private TextComponent ipStatus;
 	private StringUserInput ipAddress;
 	private UserInput<Integer> port;
+	private XmlRpcClient client;
+
 
 	@Override
 	public String getTitle(Locale locale) {
@@ -105,7 +115,7 @@ public class CustomUserInputs implements GripperContribution {
 			@Override
 			public boolean isValid(String value) {
 				// Custom validation of the IP address
-				if ("0.0.0.0".equals(value)) {		// TODO: Make so reserved ip's cant be used
+				if ("0.0.0.0".equals(value)) {		// TODO: Make so reserved ip's cant be used (Problem: theres a lot)
 					return false;
 				}
 
@@ -122,6 +132,7 @@ public class CustomUserInputs implements GripperContribution {
 			public void onValueChanged(String value) {
 				updateConnectionStatusTextAndIcon(value);
 				System.out.println("IP-address changed to: " + value);
+
 			}
 		});
 	}
@@ -131,19 +142,25 @@ public class CustomUserInputs implements GripperContribution {
 		
 		port.setValueChangedListener(new ValueChangedListener<Integer>() {
 			@Override
-			public void onValueChanged(Integer value) {		// TODO: Establish connection when a change is registered 
+			public void onValueChanged(Integer value) { 
 				System.out.println("Port changed to: " + value);
 			}
 		});
 	}
 
-	private void updateConnectionStatusTextAndIcon(String ipAddress) {
-		if (pingIpAddress(ipAddress)) {
-			ipStatus.setText("Connected");
-			ipStatus.setIcon(CONNECTED_ICON);
-		} else {
-			ipStatus.setText("Not connected");
-			ipStatus.setIcon(DISCONNECTED_ICON);
+	private void updateConnectionStatusTextAndIcon(String value) {
+		// if (pingIpAddress(ipAddress)) {
+		try {		
+			if (isReachable(ipAddress.getValue(), port.getValue())) {
+				ipStatus.setText("Connected");
+				ipStatus.setIcon(CONNECTED_ICON);
+			} else {
+				ipStatus.setText("Not connected");
+				ipStatus.setIcon(DISCONNECTED_ICON);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Failed: " + e);
 		}
 	}
 
@@ -156,16 +173,32 @@ public class CustomUserInputs implements GripperContribution {
 		return firstSegmentOfIpAddress % 2 == 0;
 	}
 
+	public boolean isReachable(String host, int port) {
+		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+		config.setEnabledForExtensions(true);
+		try {
+			config.setServerURL(new URL("http://" + host + ":" + port + "/RPC2"));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		config.setConnectionTimeout(1000); //1s
+		client = new XmlRpcClient();
+		client.setConfig(config);
+		try {
+			client.execute("connCheck", new ArrayList<String>());
+			return true;
+		} catch (XmlRpcException e) {
+			return false;
+		}
+	}
+
 	@Override
 	public void generatePreambleScript(ScriptWriter scriptWriter) {
-		scriptWriter.assign("XMLRPC_VARIABLE", "rpc_factory(\"xmlrpc\", \"http://127.0.0.1:5000/RPC2\")");
+		scriptWriter.assign("XMLRPC_VARIABLE", "rpc_factory(\"xmlrpc\", \"http://" + ipAddress.getValue() + ":" + port.getValue() + "/RPC2\")");
 	}
 	
 	@Override
 	public void generateGripActionScript(ScriptWriter scriptWriter, GripActionParameters gripActionParameters) {	// TODO: Use connection to send grip values
-		System.out.println("IP: " + ipAddress);
-		System.out.println("Port: " + port);
-		
 		scriptWriter.appendLine("XMLRPC_VARIABLE.connCheck()");
 
 		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
