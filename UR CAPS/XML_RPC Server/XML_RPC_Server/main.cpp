@@ -13,6 +13,12 @@
 #include <xmlrpc-c/registry.hpp>
 #include <xmlrpc-c/server_abyss.hpp>
 
+#ifdef _WIN32
+  #define SLEEP(seconds) SleepEx(seconds * 1000);
+#else
+  #define SLEEP(seconds) sleep(seconds);
+#endif
+
 class ConnCheck : public xmlrpc_c::method {
 public:
     ConnCheck() {
@@ -21,6 +27,8 @@ public:
     }
     void execute(xmlrpc_c::paramList const& paramList, xmlrpc_c::value* const retvalP) {
         std::cout << "Hello there!" << std::endl;
+
+        SLEEP(2);
 
         *retvalP = xmlrpc_c::value_int(42);
     }

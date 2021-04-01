@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1617265892388
+Bnd-LastModified: 1617267100822
 Build-Jdk: 1.8.0_282
 Built-By: ur
 Bundle-Activator: com.ur.urcap.examples.driver.gripper.advancedgripper.A
