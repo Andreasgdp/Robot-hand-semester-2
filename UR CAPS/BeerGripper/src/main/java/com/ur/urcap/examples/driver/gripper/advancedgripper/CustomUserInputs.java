@@ -27,14 +27,13 @@ import com.ur.urcap.api.domain.value.simple.Length;
 import com.ur.urcap.api.domain.value.simple.Pressure;
 import com.ur.urcap.api.domain.value.simple.Speed;
 
-import javax.swing.ImageIcon;
-import java.util.Arrays;
-import java.util.Locale;
-
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
+import javax.swing.ImageIcon;
+import java.util.Arrays;
+import java.util.Locale;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -198,27 +197,27 @@ public class CustomUserInputs implements GripperContribution {
 	}
 	
 	@Override
-	public void generateGripActionScript(ScriptWriter scriptWriter, GripActionParameters gripActionParameters) {	// TODO: Use connection to send grip values
-		scriptWriter.appendLine("XMLRPC_VARIABLE.connCheck()");
-
+	public void generateGripActionScript(ScriptWriter scriptWriter, GripActionParameters gripActionParameters) {
+		scriptWriter.appendLine("XMLRPC_VARIABLE.grip(\""+ gripActionParameters.getWidth() + "\", \"" + gripActionParameters.getSpeed() + "\", \"" + gripActionParameters.getForce() + "\")");
 		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
 	}
 	
 	@Override
-	public void generateReleaseActionScript(ScriptWriter scriptWriter, ReleaseActionParameters releaseActionParameters) {	// TODO: Use connection to send release values
+	public void generateReleaseActionScript(ScriptWriter scriptWriter, ReleaseActionParameters releaseActionParameters) {
+		scriptWriter.appendLine("XMLRPC_VARIABLE.release(\""+ releaseActionParameters.getWidth() + "\", \"" + releaseActionParameters.getSpeed() + "\")");
 		System.out.println("Release action :" + printCapabilityParameters(releaseActionParameters));
 	}
 
 	private void registerWidth(GripperCapabilities capability) {
 		capability.registerWidthCapability(40, 100, 50, 60, Length.Unit.MM);
 	}
+	
+	private void registerSpeed(GripperCapabilities capability) {
+		capability.registerSpeedCapability(0, 100, 40, 50, Speed.Unit.MM_S);
+	}
 
 	private void registerForce(GripperCapabilities capability) {
 		capability.registerGrippingForceCapability(0, 100, 40, Force.Unit.N);
-	}
-
-	private void registerSpeed(GripperCapabilities capability) {
-		capability.registerSpeedCapability(0, 100, 40, 50, Speed.Unit.MM_S);
 	}
 
 	private String printCapabilityParameters(GripActionParameters gripActionParameters) {
