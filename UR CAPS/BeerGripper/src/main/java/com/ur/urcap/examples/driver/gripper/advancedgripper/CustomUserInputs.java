@@ -142,13 +142,13 @@ public class CustomUserInputs implements GripperContribution {
 		port.setValueChangedListener(new ValueChangedListener<Integer>() {
 			@Override
 			public void onValueChanged(Integer value) { 
+				updateConnectionStatusTextAndIcon(value);
 				System.out.println("Port changed to: " + value);
 			}
 		});
 	}
 
 	private void updateConnectionStatusTextAndIcon(String value) {
-		// if (pingIpAddress(ipAddress)) {
 		try {		
 			if (isReachable(ipAddress.getValue(), port.getValue())) {
 				ipStatus.setText("Connected");
@@ -161,15 +161,6 @@ public class CustomUserInputs implements GripperContribution {
 		} catch (Exception e) {
 			System.out.println("Failed: " + e);
 		}
-	}
-
-	private boolean pingIpAddress(String ipAddress) {		// TODO: Make a legit check
-		// "Simulate" pinging the entered IP address using the 1st segment of the IP address
-		String[] splitArray = ipAddress.split("\\.");
-		int firstSegmentOfIpAddress = Integer.parseInt(splitArray[0]);
-
-		// The result of the ping operation will be successful, if the first of the IP address is an even number
-		return firstSegmentOfIpAddress % 2 == 0;
 	}
 
 	public boolean isReachable(String host, int port) {
