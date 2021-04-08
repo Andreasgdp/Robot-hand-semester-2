@@ -1,10 +1,12 @@
 #include "gripper.h"
 #include <iostream>
+#include <cmath>
 
 // Initialize static member variables
 int Gripper::_width{0};
 int Gripper::_speed{0};
 int Gripper::_force{0};
+
 
 Gripper::Gripper() {
 }
@@ -18,9 +20,9 @@ int Gripper::getWidth(){
 }
 
 void Gripper::grip(std::string width, std::string speed, std::string force) {
-    int vWidth = stoi(width);
-    int vSpeed = stoi(speed);
-    int vForce = stoi(force);
+    int vWidth = lrint(stod(width)*scale);
+    int vSpeed = lrint(stod(speed)*scale);
+    int vForce = lrint(stod(force)*scale);
 
     while (vWidth != _width && vForce != _force) {
         if (vWidth < _width && vForce < _force) {
@@ -29,13 +31,13 @@ void Gripper::grip(std::string width, std::string speed, std::string force) {
             _width++;
         }
     }
-
+    std::cout << _width << std::endl;
     std::cout << "grip done" << std::endl;
 }
 
 void Gripper::release(std::string width, std::string speed) {
-    int vWidth = stoi(width);
-    int vSpeed = stoi(speed);
+    int vWidth = lrint(stod(width)*scale);
+    int vSpeed = lrint(stod(speed)*scale);
 
     while (vWidth != _width) {
         if (vWidth < _width) {

@@ -12,9 +12,8 @@ public:
     void setWidth(int width);
     int getWidth();
 private:
-    static int _width;
-    static int _speed;
-    static int _force;
+    static int _width, _speed, _force;
+    int scale = 1000;
 };
 
 #endif // GRIPPER_H

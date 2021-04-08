@@ -1,5 +1,4 @@
 #include "MainWindow.h"
-
 #include <QApplication>
 
 #define WIN32_LEAN_AND_MEAN
@@ -25,6 +24,8 @@
 #else
 #define SLEEP(seconds) sleep(seconds);
 #endif
+
+//Create a gripper object
 Gripper gripper;
 
 class ConnCheck : public xmlrpc_c::method {
