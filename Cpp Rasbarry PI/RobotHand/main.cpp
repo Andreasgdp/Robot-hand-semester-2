@@ -9,6 +9,10 @@
 #include <string>
 #include <thread>
 #include "gripper.h"
+#include <wiringPi.h> /* include wiringPi library */
+#include <stdio.h>
+#include <softPwm.h>  /* include header file for software PWM */
+
 #ifdef _WIN32
 #include <windows.h>
 #else
@@ -107,14 +111,27 @@ void server(){
     }
 }
 
+void motorRamp(){
+    int PWM_pin = 1;                /* GPIO1 as per WiringPi,GPIO18 as per BCM */
+    int intensity = gripper.getSpeed();
+    wiringPiSetup();                /* initialize wiringPi setup */
+    pinMode(PWM_pin,OUTPUT);        /* set GPIO as output */
+    softPwmCreate(PWM_pin,1,100);	/* set PWM channel along with range*/
+    if (gripper.getRun() == 1) {
+        softPwmWrite (PWM_pin, intensity);
+    std::cout << intensity << std::endl; //for testing to see if the variable changes
+        delay(1);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     std::thread first (server);
+    std::thread second (motorRamp);
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
 
     return a.exec();
-
 }
 
