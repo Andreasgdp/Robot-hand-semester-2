@@ -5,7 +5,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ur.urcap.examples.driver.gripper</groupId>
+	<groupId>com</groupId>
 	<artifactId>advancedgripper</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>Advanced Gripper</name>
@@ -18,7 +18,7 @@
 		<!--         that comes along with your URCap                           -->
 		<!--********************************************************************-->
 		<!--******************* BEGINNING OF URCAP META DATA *******************-->
-		<urcap.symbolicname>com.ur.urcap.examples.driver.gripper.advancedgripper</urcap.symbolicname>
+		<urcap.symbolicname>com</urcap.symbolicname>
 		<urcap.vendor>Universal Robots</urcap.vendor>
 		<urcap.contactAddress>Energivej 25, 5260 Odense S, Denmark</urcap.contactAddress>
 		<urcap.copyright>Copyright (C) 2009-${copyright.year} Universal Robots. All Rights Reserved</urcap.copyright>
@@ -101,7 +101,7 @@
 					<instructions>
 						<!--********** DO NOT MODIFY THE ENTRIES OF THIS SECTION **********-->
 						<Bundle-Category>URCap</Bundle-Category>
-						<Bundle-Activator>com.ur.urcap.examples.driver.gripper.advancedgripper.Activator</Bundle-Activator>
+						<Bundle-Activator>com.Activator</Bundle-Activator>
 						<Bundle-Vendor>${urcap.vendor}</Bundle-Vendor>
 						<Bundle-ContactAddress>${urcap.contactAddress}</Bundle-ContactAddress>
 						<Bundle-Copyright>${urcap.copyright}</Bundle-Copyright>

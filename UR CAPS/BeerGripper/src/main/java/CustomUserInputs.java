@@ -138,9 +138,8 @@ public class CustomUserInputs implements GripperContribution {
 		
 		port.setValueChangedListener(new ValueChangedListener<Integer>() {
 			@Override
-			public void onValueChanged(Integer value) { 
-				String strValue = Integer.tostring(value);
-				updateConnectionStatusTextAndIcon(strValue);
+			public void onValueChanged(Integer value) {
+				updateConnectionStatusTextAndIcon(String.valueOf(value));
 				System.out.println("Port changed to: " + value);
 			}
 		});
