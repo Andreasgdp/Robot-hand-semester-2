@@ -1,4 +1,4 @@
-package com.ur.urcap.examples.driver.gripper.advancedgripper;
+package com;
 
 import com.ur.urcap.api.contribution.driver.general.tcp.TCPConfiguration;
 import com.ur.urcap.api.contribution.driver.general.userinput.CustomUserInputConfiguration;
@@ -94,9 +94,6 @@ public class CustomUserInputs implements GripperContribution {
 									  GripperAPIProvider gripperAPIProvider) {
 		configuration.setDescriptionText("Configure IP-address and port.");			// Decription (Top of the screen)
 		customizeInstallationScreen(configuration);
-
-		ControllableResourceModel resourceModel = systemConfiguration.getControllableResourceModel();
-		resourceModel.requestControl(new ToolIOController());
 	}
 
 	private void customizeInstallationScreen(CustomUserInputConfiguration configurationUIBuilder) {
@@ -114,7 +111,7 @@ public class CustomUserInputs implements GripperContribution {
 			@Override
 			public boolean isValid(String value) {
 				// Custom validation of the IP address
-				if ("0.0.0.0".equals(value)) {		// TODO: Make so reserved ip's cant be used (Problem: theres a lot)
+				if ("0.0.0.0".equals(value)) {
 					return false;
 				}
 
@@ -126,7 +123,7 @@ public class CustomUserInputs implements GripperContribution {
 				return "IP-address cannot be: " + value;
 			}
 		});
-		ipAddress.setValueChangedListener(new ValueChangedListener<String>() {		// TODO: Establish connection when a change is registered 
+		ipAddress.setValueChangedListener(new ValueChangedListener<String>() {
 			@Override
 			public void onValueChanged(String value) {
 				updateConnectionStatusTextAndIcon(value);
@@ -141,8 +138,8 @@ public class CustomUserInputs implements GripperContribution {
 		
 		port.setValueChangedListener(new ValueChangedListener<Integer>() {
 			@Override
-			public void onValueChanged(Integer value) { 
-				updateConnectionStatusTextAndIcon(value);
+			public void onValueChanged(Integer value) {
+				updateConnectionStatusTextAndIcon(String.valueOf(value));
 				System.out.println("Port changed to: " + value);
 			}
 		});

@@ -1,5 +1,4 @@
-package com.ur.urcap.examples.driver.gripper.advancedgripper;
-// package com.ur.urcap.examples.driver.gripper.customuserinput;
+package com;
 
 import com.ur.urcap.api.contribution.driver.gripper.GripperContribution;
 import org.osgi.framework.BundleActivator;
