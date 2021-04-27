@@ -112,18 +112,42 @@ void server(){
 }
 
 void motorRamp(){
-    int PWM_pin = 1;                /* GPIO1 as per WiringPi,GPIO18 as per BCM */
-    int intensity = gripper.getSpeed();
-    wiringPiSetup();                /* initialize wiringPi setup */
+    int PWM_pin     = 18;                /* GPIO0 as per WiringPi,GPIO18 as per BCM */
+    int PIN_close   = 17;
+    int PIN_open    = 27;
+    int PIN_dead    = 22;
+    int intensity   = gripper.getSpeed();
+
+    wiringPiSetupGpio();                /* initialize wiringPi setup */
     pinMode(PWM_pin,OUTPUT);        /* set GPIO as output */
+    pinMode(PIN_close, OUTPUT);
+    pinMode(PIN_open, OUTPUT);
+    pinMode(PIN_dead, INPUT);
     softPwmCreate(PWM_pin,1,100);	/* set PWM channel along with range*/
-    if (gripper.getRun() == 1) {
-        softPwmWrite (PWM_pin, intensity);
-    std::cout << intensity << std::endl; //for testing to see if the variable changes
-        delay(1);
+    while (1) {
+        while (gripper.getRun() == 2 && digitalRead(PIN_dead) == LOW) { // This is output for close
+            intensity = gripper.getSpeed();
+            digitalWrite(PIN_close, HIGH);
+            digitalWrite(PIN_open, LOW);
+            softPwmWrite (PWM_pin, intensity);
+        }
+        while (gripper.getRun() == 1 && digitalRead(PIN_dead) == LOW) { // This is output for open
+            intensity = gripper.getSpeed();
+            digitalWrite(PIN_close, LOW);
+            digitalWrite(PIN_open, HIGH);
+            softPwmWrite (PWM_pin, intensity);
+        }
+        while (gripper.getRun() == 0 || digitalRead(PIN_dead) == HIGH) { // This is a resting state
+            softPwmWrite (PWM_pin, intensity);
+            digitalWrite(PIN_close, LOW);
+            digitalWrite(PIN_open, LOW);
+            if (digitalRead(PIN_dead) == HIGH){
+                gripper.setRun(0);
+                std::cout << "DEATH!" << std::endl;
+            }
+        }
     }
 }
-
 int main(int argc, char *argv[])
 {
     std::thread first (server);

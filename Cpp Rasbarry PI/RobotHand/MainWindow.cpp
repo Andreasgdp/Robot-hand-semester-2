@@ -15,25 +15,41 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    g.~Gripper();
     delete ui;
 }
 
 
 void MainWindow::on_btConnect_clicked()
 {
+    if(g.getRun() == 0) {
 
+    } else {
+        g.setRun(0);
+        std::cout << g.getRun() << std::endl;
+    }
 }
 
 void MainWindow::on_btOpen_clicked()
 {
-    g.setWidth(g.getWidth()+1);
-    std::cout << g.getWidth() << std::endl;
+    if(g.getRun() == 2) {
+        g.setRun(0);
+        std::cout << g.getRun() << std::endl;
+    } else {
+        g.setRun(2);
+        std::cout << g.getRun() << std::endl;
+    }
 }
 
 void MainWindow::on_btClose_clicked()
 {
-    g.setWidth(g.getWidth()-1);
-    std::cout << g.getWidth() << std::endl;
+    if(g.getRun() == 1) {
+        g.setRun(0);
+        std::cout << g.getRun() << std::endl;
+    } else {
+        g.setRun(1);
+        std::cout << g.getRun() << std::endl;
+    }
 }
 
 void MainWindow::on_lConnect_textEdited(const QString &arg1)
