@@ -186,13 +186,13 @@ public class CustomUserInputs implements GripperContribution {
 	
 	@Override
 	public void generateGripActionScript(ScriptWriter scriptWriter, GripActionParameters gripActionParameters) {
-		scriptWriter.appendLine("XMLRPC_VARIABLE.grip(\""+ gripActionParameters.getWidth() + "\", \"" + gripActionParameters.getSpeed() + "\", \"" + gripActionParameters.getForce() + "\")");
+		scriptWriter.appendLine("XMLRPC_VARIABLE.grip(\""+ gripActionParameters.getWidth() + "\", \"" + gripActionParameters.getSpeed().getAs(Speed.Unit.MM_S) + " %" + "\", \"" + gripActionParameters.getForce() + "\")");
 		System.out.println("Grip action :" + printCapabilityParameters(gripActionParameters));
 	}
 	
 	@Override
 	public void generateReleaseActionScript(ScriptWriter scriptWriter, ReleaseActionParameters releaseActionParameters) {
-		scriptWriter.appendLine("XMLRPC_VARIABLE.release(\""+ releaseActionParameters.getWidth() + "\", \"" + releaseActionParameters.getSpeed() + "\")");
+		scriptWriter.appendLine("XMLRPC_VARIABLE.release(\""+ releaseActionParameters.getWidth() + "\", \"" + gripActionParameters.getSpeed().getAs(Speed.Unit.MM_S) + " %" + "\")");
 		System.out.println("Release action :" + printCapabilityParameters(releaseActionParameters));
 	}
 
@@ -224,7 +224,7 @@ public class CustomUserInputs implements GripperContribution {
 	}
 
 	String printSpeedCapabilityParameter(Speed speed) {
-		return speed.getAs(Speed.Unit.MM_S) + " mm/s";
+		return speed.getAs(Speed.Unit.MM_S) + " %";
 	}
 
 	String printForceCapabilityParameter(Force force) {
