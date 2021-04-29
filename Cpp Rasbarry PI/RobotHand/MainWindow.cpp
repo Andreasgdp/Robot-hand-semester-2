@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->lcdSpeed->display(g.getSpeed());
+    ui->lcdWidth->display(g.getWidth());
 }
 
 MainWindow::~MainWindow()
@@ -52,7 +54,23 @@ void MainWindow::on_btClose_clicked()
     }
 }
 
-void MainWindow::on_lConnect_textEdited(const QString &arg1)
+void MainWindow::on_leSpeed_textChanged(const QString &arg1)
 {
     ipInputString = arg1.toUtf8().constData();
+}
+
+void MainWindow::on_btSetSpeed_clicked()
+{
+    int speed = (ui->leSpeed->text()).toInt();
+    //ui->lcdSpeed->display(speed);
+    g.setSpeed(speed);
+}
+
+
+
+void MainWindow::on_leSpeed_returnPressed()
+{
+    int speed = (ui->leSpeed->text()).toInt();
+    //ui->lcdSpeed->display(speed);
+    g.setSpeed(speed);
 }

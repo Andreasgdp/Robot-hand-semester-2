@@ -28,6 +28,12 @@ private slots:
 
     void on_lConnect_textEdited(const QString &arg1);
 
+    void on_btSetSpeed_clicked();
+
+    void on_leSpeed_textChanged(const QString &arg1);
+
+    void on_leSpeed_returnPressed();
+
 private:
     Ui::MainWindow *ui;
 };
