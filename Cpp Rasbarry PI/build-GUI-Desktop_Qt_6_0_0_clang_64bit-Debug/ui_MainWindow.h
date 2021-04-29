@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -28,6 +29,7 @@ public:
     QWidget *widget;
     QPushButton *ManualBottom;
     QPushButton *pushButton;
+    QLabel *label;
     QStatusBar *statusbar;
     QMenuBar *menubar;
 
@@ -70,6 +72,9 @@ public:
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(160, 240, 75, 23));
         pushButton->setCheckable(false);
+        label = new QLabel(widget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(160, 220, 81, 16));
 
         horizontalLayout_4->addWidget(widget);
 
@@ -92,7 +97,8 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         ManualBottom->setText(QString());
-        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Push me ", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "YAS DADDY", nullptr));
     } // retranslateUi
 
 };

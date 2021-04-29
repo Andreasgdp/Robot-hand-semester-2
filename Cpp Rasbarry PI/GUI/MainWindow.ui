@@ -80,10 +80,23 @@ background-repeat: none;
         </rect>
        </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>Push me </string>
        </property>
        <property name="checkable">
         <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>220</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>YAS DADDY</string>
        </property>
       </widget>
      </widget>
