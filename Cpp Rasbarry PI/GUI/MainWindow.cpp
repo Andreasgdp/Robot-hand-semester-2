@@ -16,10 +16,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_ManualBottom_clicked(bool checked)
 {
-    std::cout << "boo" << std::endl;
+    if (checked == true){
+        std::cout << "boo" << std::endl;
+    }
+    else {
+        std::cout << "Hoo" << std::endl;
+    }
+}
+void MainWindow::on_ManualBottom_released()
+{
+
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    std::cout << "Hoo" << std::endl;
+    std::cout << "Push me daddy" << std::endl;
 }
+
+

@@ -53,9 +53,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../GUI/main.cpp \
-		../GUI/MainWindow.cpp moc_MainWindow.cpp
+		../GUI/MainWindow.cpp qrc_Images.cpp \
+		moc_MainWindow.cpp
 OBJECTS       = main.o \
 		MainWindow.o \
+		qrc_Images.o \
 		moc_MainWindow.o
 DIST          = /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/device_config.prf \
@@ -140,6 +142,7 @@ DIST          = /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/spec_pre.
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/qt_config.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/spec_post.prf \
+		../GUI/.qmake.stash \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/toolchain.prf \
@@ -275,6 +278,7 @@ Makefile: ../GUI/GUI.pro /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/macx-clan
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/qt_config.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/toolchain.prf \
@@ -304,6 +308,7 @@ Makefile: ../GUI/GUI.pro /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/macx-clan
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/yacc.prf \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/lex.prf \
 		../GUI/GUI.pro \
+		../GUI/Images.qrc \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/lib/QtWidgets.framework/Resources/QtWidgets.prl \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/lib/QtGui.framework/Resources/QtGui.prl \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/lib/QtCore.framework/Resources/QtCore.prl
@@ -391,6 +396,7 @@ Makefile: ../GUI/GUI.pro /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/macx-clan
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/qt_config.prf:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/toolchain.prf:
@@ -420,6 +426,7 @@ Makefile: ../GUI/GUI.pro /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/macx-clan
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/yacc.prf:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/lex.prf:
 ../GUI/GUI.pro:
+../GUI/Images.qrc:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/lib/QtWidgets.framework/Resources/QtWidgets.prl:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/lib/QtGui.framework/Resources/QtGui.prl:
 /Users/TobiasPiekut/Qt/6.0.0/clang_64/lib/QtCore.framework/Resources/QtCore.prl:
@@ -452,6 +459,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../GUI/Images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/TobiasPiekut/Qt/6.0.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../GUI/MainWindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../GUI/main.cpp ../GUI/MainWindow.cpp $(DISTDIR)/
@@ -465,6 +473,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r GUI.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -481,8 +490,18 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_Images.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_Images.cpp
+qrc_Images.cpp: ../GUI/Images.qrc \
+		/Users/TobiasPiekut/Qt/6.0.0/clang_64/bin/rcc \
+		../GUI/row-1-col-1.jpg \
+		../GUI/toggle_left.jpg \
+		../GUI/row-2-col-1.jpg \
+		../GUI/claw.jpg \
+		../GUI/toggle_right.jpg
+	/Users/TobiasPiekut/Qt/6.0.0/clang_64/bin/rcc -name Images ../GUI/Images.qrc -o qrc_Images.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -518,7 +537,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -534,6 +553,9 @@ MainWindow.o: ../GUI/MainWindow.cpp ../GUI/MainWindow.h \
 		/Users/TobiasPiekut/Qt/6.0.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		ui_MainWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o ../GUI/MainWindow.cpp
+
+qrc_Images.o: qrc_Images.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Images.o qrc_Images.cpp
 
 moc_MainWindow.o: moc_MainWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainWindow.o moc_MainWindow.cpp
