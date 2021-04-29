@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>row-1-col-1.jpg</file>
+        <file>row-2-col-1.jpg</file>
+        <file>claw.jpg</file>
+        <file>toggle_left.jpg</file>
+        <file>toggle_right.jpg</file>
+    </qresource>
+</RCC>

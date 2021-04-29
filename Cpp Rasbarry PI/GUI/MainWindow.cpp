@@ -14,23 +14,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-void MainWindow::on_btConnect_clicked()
+void MainWindow::on_ManualBottom_clicked(bool checked)
 {
-    succesString = ipInputString + " proof";
+    std::cout << "boo" << std::endl;
 }
 
-void MainWindow::on_btOpen_clicked()
+void MainWindow::on_pushButton_clicked()
 {
-    gripperState = 1;
-}
-
-void MainWindow::on_btClose_clicked()
-{
-    gripperState = -1;
-}
-
-void MainWindow::on_lConnect_textEdited(const QString &arg1)
-{
-    ipInputString = arg1.toUtf8().constData();
+    std::cout << "Hoo" << std::endl;
 }

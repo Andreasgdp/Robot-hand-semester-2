@@ -22,25 +22,22 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    const uint offsetsAndSize[14];
-    char stringdata0[98];
+    const uint offsetsAndSize[10];
+    char stringdata0[66];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 10), // "MainWindow"
-QT_MOC_LITERAL(11, 20), // "on_btConnect_clicked"
-QT_MOC_LITERAL(32, 0), // ""
-QT_MOC_LITERAL(33, 17), // "on_btOpen_clicked"
-QT_MOC_LITERAL(51, 18), // "on_btClose_clicked"
-QT_MOC_LITERAL(70, 22), // "on_lConnect_textEdited"
-QT_MOC_LITERAL(93, 4) // "arg1"
+QT_MOC_LITERAL(11, 23), // "on_ManualBottom_clicked"
+QT_MOC_LITERAL(35, 0), // ""
+QT_MOC_LITERAL(36, 7), // "checked"
+QT_MOC_LITERAL(44, 21) // "on_pushButton_clicked"
 
     },
-    "MainWindow\0on_btConnect_clicked\0\0"
-    "on_btOpen_clicked\0on_btClose_clicked\0"
-    "on_lConnect_textEdited\0arg1"
+    "MainWindow\0on_ManualBottom_clicked\0\0"
+    "checked\0on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +47,7 @@ static const uint qt_meta_data_MainWindow[] = {
        9,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,16 +55,12 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   38,    2, 0x08,    0 /* Private */,
-       3,    0,   39,    2, 0x08,    1 /* Private */,
-       4,    0,   40,    2, 0x08,    2 /* Private */,
-       5,    1,   41,    2, 0x08,    3 /* Private */,
+       1,    1,   26,    2, 0x08,    0 /* Private */,
+       4,    0,   29,    2, 0x08,    2 /* Private */,
 
  // slots: parameters
+    QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    6,
 
        0        // eod
 };
@@ -78,10 +71,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_btConnect_clicked(); break;
-        case 1: _t->on_btOpen_clicked(); break;
-        case 2: _t->on_btClose_clicked(); break;
-        case 3: _t->on_lConnect_textEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 0: _t->on_ManualBottom_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 1: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
@@ -95,7 +86,7 @@ const QMetaObject MainWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
 
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -122,13 +113,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 2;
     }
     return _id;
 }

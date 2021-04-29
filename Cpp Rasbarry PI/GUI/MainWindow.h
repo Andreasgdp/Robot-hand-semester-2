@@ -20,13 +20,10 @@ public:
     std::string succesString = "";
 
 private slots:
-    void on_btConnect_clicked();
 
-    void on_btOpen_clicked();
+    void on_ManualBottom_clicked(bool checked);
 
-    void on_btClose_clicked();
-
-    void on_lConnect_textEdited(const QString &arg1);
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
