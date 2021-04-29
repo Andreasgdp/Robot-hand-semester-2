@@ -192,7 +192,7 @@ public class CustomUserInputs implements GripperContribution {
 	
 	@Override
 	public void generateReleaseActionScript(ScriptWriter scriptWriter, ReleaseActionParameters releaseActionParameters) {
-		scriptWriter.appendLine("XMLRPC_VARIABLE.release(\""+ releaseActionParameters.getWidth() + "\", \"" + gripActionParameters.getSpeed().getAs(Speed.Unit.MM_S) + " %" + "\")");
+		scriptWriter.appendLine("XMLRPC_VARIABLE.release(\""+ releaseActionParameters.getWidth() + "\", \"" + releaseActionParameters.getSpeed().getAs(Speed.Unit.MM_S) + " %" + "\")");
 		System.out.println("Release action :" + printCapabilityParameters(releaseActionParameters));
 	}
 
