@@ -1,7 +1,2 @@
-/home/ur/ursim/ursim-3.14.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/ur/urcap/examples/driver/gripper/advancedgripper/ToolIOController.java
-/home/ur/ursim/ursim-3.14.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/ur/urcap/examples/driver/gripper/advancedgripper/Logging.java
-/home/ur/ursim/ursim-3.14.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/ur/urcap/examples/driver/gripper/advancedgripper/GripperStatus.java
-/home/ur/ursim/ursim-3.14.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/ur/urcap/examples/driver/gripper/advancedgripper/GripperClient.java
-/home/ur/ursim/ursim-3.14.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/ur/urcap/examples/driver/gripper/advancedgripper/Activator.java
-/home/ur/ursim/ursim-3.14.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/ur/urcap/examples/driver/gripper/advancedgripper/AdvancedGripper.java
-/home/ur/ursim/ursim-3.14.1.1031110/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/ur/urcap/examples/driver/gripper/advancedgripper/CustomUserInputs.java
+/home/andreasgdp/ursim-3.14.3.1031232/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/Activator.java
+/home/andreasgdp/ursim-3.14.3.1031232/programs.UR5/Robot-hand-semester-2/UR CAPS/BeerGripper/src/main/java/com/CustomUserInputs.java
