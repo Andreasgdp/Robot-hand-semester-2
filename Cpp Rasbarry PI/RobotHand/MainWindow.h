@@ -34,6 +34,8 @@ private slots:
 
     void on_leSpeed_returnPressed();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

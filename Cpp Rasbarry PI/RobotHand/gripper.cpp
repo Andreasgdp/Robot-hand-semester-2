@@ -7,21 +7,20 @@
 
 // Initialize static member variables
 int Gripper::_width{0};
-int Gripper::_speed{25};
+int Gripper::_speed{100};
 int Gripper::_force{0};
-int Gripper::run{0};
+int Gripper::_run{0};
 
 
 Gripper::Gripper() {
 }
 
-Gripper::~Gripper()
-{
+Gripper::~Gripper() {
     _width = 0;
     _speed = 0;
     _force = 0;
-    run = 0;
-    wiringPiSetupGpio();                /* initialize wiringPi setup */
+    _run = 0;
+    wiringPiSetupGpio();       /* initialize wiringPi setup */
     pinMode(18,OUTPUT);        /* set GPIO as output */
     pinMode(17, OUTPUT);
     pinMode(27, OUTPUT);
@@ -35,60 +34,49 @@ void Gripper::setWidth(int width) {
     _width = width;
 }
 
-int Gripper::getWidth(){
+int Gripper::getWidth() {
     return _width;
 }
 
-int Gripper::getRun(){
-    return run;
+int Gripper::getRun() {
+    return _run;
 }
 
-int Gripper::getSpeed()
-{
+int Gripper::getSpeed() {
     return _speed;
 }
 
-void Gripper::setSpeed(int speed)
-{
+void Gripper::setSpeed(int speed) {
     _speed = speed;
 }
 
 void Gripper::setRun(int value)
 {
-    run = value;
+    _run = value;
 }
 
 void Gripper::grip(std::string width, std::string speed, std::string force) {
     int vWidth = lrint(stod(width)*scale);
     int vSpeed = lrint(stod(speed)*scale);
     int vForce = lrint(stod(force)*scale);
-    run = 1;
+    _run = 1;
     _speed = vSpeed;
-    while (vWidth != _width && vForce != _force) {
-        if (vWidth < _width && vForce < _force) {
-            _width--;
-        } else if (vWidth > _width && vForce < _force) {
-            _width++;
-        }
+    while (_run == 1) {
+
     }
-    std::cout << _width << std::endl;
     std::cout << "grip done" << std::endl;
-    run = 0;
+
 }
 
 void Gripper::release(std::string width, std::string speed) {
     int vWidth = lrint(stod(width)*scale);
     int vSpeed = lrint(stod(speed)*scale);
     _speed = vSpeed;
-    run = 2;
-    while (vWidth != _width) {
-        if (vWidth < _width) {
-            _width--;
-        } else if (vWidth > _width) {
-            _width++;
-        }
+    _run = 2;
+    while (_run == 2) {
+
     }
 
     std::cout << "release done" << std::endl;
-    run = 0;
+
 }

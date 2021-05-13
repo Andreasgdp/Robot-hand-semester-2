@@ -21,7 +21,7 @@ public:
 
 private:
     static int _width, _speed, _force;
-    static int run;
+    static int _run;
     int scale = 1000;
 };
 

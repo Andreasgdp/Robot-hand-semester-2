@@ -117,6 +117,7 @@ void motorRamp(){
     int PIN_open    = 27;
     int PIN_dead    = 22;
     int intensity   = gripper.getSpeed();
+    bool deadBtn    = false;
 
     wiringPiSetupGpio();                /* initialize wiringPi setup */
     pinMode(PWM_pin,OUTPUT);        /* set GPIO as output */
@@ -137,14 +138,21 @@ void motorRamp(){
             digitalWrite(PIN_open, HIGH);
             softPwmWrite (PWM_pin, intensity);
         }
-        while (gripper.getRun() == 0 || digitalRead(PIN_dead) == HIGH) { // This is a resting state
+        while (gripper.getRun() == 0 || deadBtn) { // This is a resting state
             softPwmWrite (PWM_pin, intensity);
             digitalWrite(PIN_close, LOW);
             digitalWrite(PIN_open, LOW);
-            if (digitalRead(PIN_dead) == HIGH){
+            if (deadBtn || digitalRead(PIN_dead) == HIGH){
                 gripper.setRun(0);
                 std::cout << "DEATH!" << std::endl;
+                deadBtn = false;
+                delay(100);
             }
+        }
+        while (digitalRead(PIN_dead) == HIGH && !deadBtn) {
+            delay(50);
+            if (digitalRead(PIN_dead) == HIGH)
+                deadBtn = true;
         }
     }
 }

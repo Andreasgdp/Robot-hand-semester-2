@@ -3,8 +3,10 @@
 #include <iostream>
 #include "gripper.h"
 
+
 //Create a gripper object
 Gripper g;
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->lcdSpeed->display(g.getSpeed());
     ui->lcdWidth->display(g.getWidth());
+    ui->leSpeed->setMaxLength(3);
 }
 
 MainWindow::~MainWindow()
@@ -20,7 +23,6 @@ MainWindow::~MainWindow()
     g.~Gripper();
     delete ui;
 }
-
 
 void MainWindow::on_btConnect_clicked()
 {
@@ -59,18 +61,48 @@ void MainWindow::on_leSpeed_textChanged(const QString &arg1)
     ipInputString = arg1.toUtf8().constData();
 }
 
-void MainWindow::on_btSetSpeed_clicked()
-{
-    int speed = (ui->leSpeed->text()).toInt();
-    //ui->lcdSpeed->display(speed);
-    g.setSpeed(speed);
-}
 
 
 
 void MainWindow::on_leSpeed_returnPressed()
 {
-    int speed = (ui->leSpeed->text()).toInt();
-    //ui->lcdSpeed->display(speed);
+    bool ok;
+    int speed = (ui->leSpeed->text()).toInt(&ok);
+    if (ok){
+    ui->lcdSpeed->display(speed);
     g.setSpeed(speed);
+    }
+    else {
+        std::cout << "Invalid speed" << std::endl;
+    }
+}
+
+void MainWindow::on_btSetSpeed_clicked()
+{
+    bool ok;
+    int speed = (ui->leSpeed->text()).toInt(&ok);
+    if (ok){
+        if (speed > 100) {
+            std::cout << "Speed capped at 100%" << std::endl;
+            speed = 100;
+        }
+        else if (speed < 0) {
+            std::cout << "Speed cannot be negative" << std::endl;
+        }
+        else {
+            ui->lcdSpeed->display(speed);
+            g.setSpeed(speed);
+            ui->leSpeed->clear();
+        }
+    }
+    else {
+        std::cout << "Invalid speed" << std::endl;
+    }
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->lcdSpeed->display(g.getSpeed());
+    ui->lcdWidth->display(g.getWidth());
 }
