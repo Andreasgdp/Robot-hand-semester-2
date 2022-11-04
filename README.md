@@ -31,7 +31,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align="center"> 
-<img src="https://user-images.githubusercontent.com/39928082/200006428-1ced1bf0-f8ad-4f93-9450-786b471afd57.png" alt="SDU" title="SDU" width="80%" height="80%"/> 
+<img src="https://user-images.githubusercontent.com/39928082/200006428-1ced1bf0-f8ad-4f93-9450-786b471afd57.png" alt="Gripper" title="Gripper" width="30%" height="30%"/> 
 </p>
 
 ### Abstract
@@ -49,8 +49,7 @@ to control the gripper directly.
 
 ### Built With
 
-* [Java]()
-* [PLC script]()
+* [C++]()
 * [Pure manpower]()
 
 
